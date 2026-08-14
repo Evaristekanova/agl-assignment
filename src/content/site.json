@@ -5,6 +5,7 @@
   "logo": { "src": "/logo.svg", "alt": "AGL Rwanda", "width": 48, "height": 36 },
   "theme": {
     "brand": "#e2007a",
+    "green": "#00a86b",
     "brandDark": "#b0005f",
     "brandSoft": "#fdeef6",
     "gradientFrom": "#c9105c",

@@ -1,5 +1,6 @@
 import NextLink from "next/link";
 import type { SiteData } from "@/types";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 /** Dark footer: link columns + contact block, all driven by site.json. */
 export function Footer({ site }: { site: SiteData }) {
@@ -28,21 +29,27 @@ export function Footer({ site }: { site: SiteData }) {
         <div>
           <p className="text-base font-semibold text-white">{contact.title}</p>
           <ul className="mt-4 space-y-3 text-sm text-slate-400">
-            <li className="flex items-start gap-2.5">
-              <PinIcon />
-              <span className="max-w-56 rounded-md border border-slate-600 px-2.5 py-1.5 text-xs leading-5">
+            <li className="flex items-center gap-2.5">
+              <MapPin size={16} />
+              <span className="max-w-56 rounded-md  px-2.5 py-1.5 underline text-xs leading-5">
                 {contact.address}
               </span>
             </li>
             <li className="flex items-center gap-2.5">
-              <PhoneIcon />
-              <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="transition hover:text-white">
+              <Phone size={16} />
+              <a
+                href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                className="transition hover:text-white"
+              >
                 {contact.phone}
               </a>
             </li>
             <li className="flex items-center gap-2.5">
-              <MailIcon />
-              <a href={`mailto:${contact.email}`} className="transition hover:text-white">
+              <Mail size={16} />
+              <a
+                href={`mailto:${contact.email}`}
+                className="transition hover:text-white"
+              >
                 {contact.email}
               </a>
             </li>
@@ -56,31 +63,5 @@ export function Footer({ site }: { site: SiteData }) {
         </p>
       </div>
     </footer>
-  );
-}
-
-function PinIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="mt-1 shrink-0">
-      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="shrink-0">
-      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3A19.5 19.5 0 0 1 5.1 13 19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z" />
-    </svg>
-  );
-}
-
-function MailIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="shrink-0">
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path d="m2 7 10 6 10-6" />
-    </svg>
   );
 }

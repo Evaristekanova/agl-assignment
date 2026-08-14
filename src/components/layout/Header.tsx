@@ -4,6 +4,7 @@ import NextImage from "next/image";
 import { useRouter } from "next/router";
 import type { SiteData } from "@/types";
 import { useDictionary } from "@/context/site-context";
+import { Menu, X } from "lucide-react";
 
 /**
  * Site header driven by site.json content: logo, nav items and menu
@@ -56,25 +57,14 @@ export function Header({ site }: { site: SiteData }) {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          aria-label={open ? t("nav.close", "Fermer le menu") : t("nav.open", "Ouvrir le menu")}
+          aria-label={
+            open
+              ? t("nav.close", "Fermer le menu")
+              : t("nav.open", "Ouvrir le menu")
+          }
           className="rounded-md p-2 text-slate-700 hover:bg-slate-100 lg:hidden"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            aria-hidden="true"
-          >
-            {open ? (
-              <path d="M6 6l12 12M18 6L6 18" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            )}
-          </svg>
+          {open ? <X /> : <Menu />}
         </button>
       </div>
 
@@ -82,7 +72,7 @@ export function Header({ site }: { site: SiteData }) {
         <nav
           id="mobile-nav"
           aria-label="Navigation principale"
-          className="border-t border-slate-100 lg:hidden"
+          className="border-t border-slate-100 lg:hidden absolute inset-x-0 top-16 bg-white shadow-lg z-20"
         >
           <ul className="space-y-1 px-4 py-3">
             {site.nav.map((item) => (

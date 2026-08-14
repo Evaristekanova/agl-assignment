@@ -1,17 +1,29 @@
 import type { ComponentPropsWithRef } from "react";
+import { FormField } from "./FormField";
 import { controlClasses } from "./control-classes";
 
 interface InputProps extends ComponentPropsWithRef<"input"> {
-  hasError?: boolean;
+  id: string;
+  label: string;
+  error?: string;
 }
 
-/** Text input with the shared control styling and error state. */
-export function Input({ hasError = false, className, ...props }: InputProps) {
+/**
+ * Complete form row: label, input and error message in one component.
+ * The red asterisk and all aria wiring are derived from the single
+ * `id`/`label`/`error`/`required` set, so they can never drift apart.
+ */
+export function Input({ id, label, error, required, className, ...props }: InputProps) {
   return (
-    <input
-      {...props}
-      aria-invalid={hasError || undefined}
-      className={`${controlClasses(hasError)} ${className ?? ""}`}
-    />
+    <FormField id={id} label={label} required={!!required} error={error}>
+      <input
+        id={id}
+        required={required}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+        className={`${controlClasses(!!error)} ${className ?? ""}`}
+        {...props}
+      />
+    </FormField>
   );
 }

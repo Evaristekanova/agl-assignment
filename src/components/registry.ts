@@ -31,7 +31,7 @@ const registry: Record<string, ComponentType<RenderingProps>> = {
 };
 
 export function resolveComponent(
-  name: string
+  name: string,
 ): ComponentType<RenderingProps> | null {
   return registry[name] ?? null;
 }

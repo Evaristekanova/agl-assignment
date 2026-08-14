@@ -16,7 +16,13 @@ interface FormFieldProps {
  * assistive tech learns the field is required from the control's own
  * `required` attribute.
  */
-export function FormField({ id, label, required = false, error, children }: FormFieldProps) {
+export function FormField({
+  id,
+  label,
+  required = false,
+  error,
+  children,
+}: FormFieldProps) {
   return (
     <div>
       <label
@@ -25,14 +31,18 @@ export function FormField({ id, label, required = false, error, children }: Form
       >
         {label}
         {required && (
-          <span aria-hidden="true" className="ml-0.5 text-red-500">
+          <span aria-hidden="true" className="ml-0.5 text-slate-700">
             *
           </span>
         )}
       </label>
       {children}
       {error && (
-        <p id={`${id}-error`} role="alert" className="mt-1.5 text-sm text-red-600">
+        <p
+          id={`${id}-error`}
+          role="alert"
+          className="mt-1.5 text-sm text-red-600"
+        >
           {error}
         </p>
       )}

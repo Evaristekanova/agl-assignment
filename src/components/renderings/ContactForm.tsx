@@ -5,7 +5,6 @@ import { contactSchema, type ContactInput } from "@/schemas/contact-schema";
 import type { TextField } from "@/types";
 import type { RenderingProps } from "../registry";
 import { Text } from "../fields/Text";
-import { FormField } from "../ui/FormField";
 import { Input } from "../ui/Input";
 import { Textarea } from "../ui/Textarea";
 import { Send } from "lucide-react";
@@ -181,64 +180,40 @@ function Form({ fields }: { fields: ContactFormFields }) {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {pairedInputs.map(
           ({ key, label, placeholder, type, autoComplete, required }) => (
-            <FormField
+            <Input
               key={key}
               id={key}
               label={label}
+              type={type}
+              placeholder={placeholder}
+              autoComplete={autoComplete}
               required={required}
               error={errors[key]?.message}
-            >
-              <Input
-                id={key}
-                type={type}
-                placeholder={placeholder}
-                autoComplete={autoComplete}
-                required={required}
-                hasError={!!errors[key]}
-                aria-describedby={errors[key] ? `${key}-error` : undefined}
-                {...register(key)}
-              />
-            </FormField>
+              {...register(key)}
+            />
           ),
         )}
       </div>
 
-      <FormField
+      <Input
         id="subject"
         label={value(fields.subjectLabel, "Objet")}
+        type="text"
+        placeholder={value(fields.subjectPlaceholder, "Objet de votre message")}
         required
         error={errors.subject?.message}
-      >
-        <Input
-          id="subject"
-          type="text"
-          placeholder={value(
-            fields.subjectPlaceholder,
-            "Objet de votre message",
-          )}
-          required
-          hasError={!!errors.subject}
-          aria-describedby={errors.subject ? "subject-error" : undefined}
-          {...register("subject")}
-        />
-      </FormField>
+        {...register("subject")}
+      />
 
-      <FormField
+      <Textarea
         id="message"
         label={value(fields.messageLabel, "Message")}
+        rows={6}
+        placeholder={value(fields.messagePlaceholder, "Votre message...")}
         required
         error={errors.message?.message}
-      >
-        <Textarea
-          id="message"
-          rows={6}
-          placeholder={value(fields.messagePlaceholder, "Votre message...")}
-          required
-          hasError={!!errors.message}
-          aria-describedby={errors.message ? "message-error" : undefined}
-          {...register("message")}
-        />
-      </FormField>
+        {...register("message")}
+      />
 
       {/* Honeypot: visually hidden and skipped by keyboard/screen readers.
           Humans never fill it; bots usually do. Checked server-side. */}
