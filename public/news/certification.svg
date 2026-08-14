@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="">
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bfd9e8"/>
+      <stop offset="0.55" stop-color="#7fb0cc"/>
+      <stop offset="0.56" stop-color="#2f6a8f"/>
+      <stop offset="1" stop-color="#1d4a67"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#sea)"/>
+  <g>
+    <rect x="220" y="215" width="360" height="45" fill="#b03a2e"/>
+    <rect x="220" y="185" width="360" height="32" fill="#1c2833"/>
+    <rect x="470" y="130" width="70" height="58" fill="#eaeff2"/>
+    <rect x="482" y="118" width="12" height="24" fill="#c0392b"/>
+    <g stroke="#00000033" stroke-width="2">
+      <rect x="240" y="158" width="52" height="28" fill="#e67e22"/>
+      <rect x="296" y="158" width="52" height="28" fill="#2e86c1"/>
+      <rect x="352" y="158" width="52" height="28" fill="#27ae60"/>
+      <rect x="408" y="158" width="52" height="28" fill="#e2007a"/>
+      <rect x="268" y="130" width="52" height="28" fill="#f1c40f"/>
+      <rect x="324" y="130" width="52" height="28" fill="#d64541"/>
+    </g>
+  </g>
+  <g stroke="#ffffff55" stroke-width="4" fill="none">
+    <path d="M60 300 q40 -14 80 0 t80 0 t80 0"/>
+    <path d="M480 350 q40 -14 80 0 t80 0 t80 0"/>
+    <path d="M160 400 q40 -14 80 0 t80 0"/>
+  </g>
+</svg>

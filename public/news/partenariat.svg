@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="">
+  <defs>
+    <linearGradient id="yard" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfd8de"/>
+      <stop offset="1" stop-color="#9fb0ba"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#yard)"/>
+  <g stroke="#00000022" stroke-width="2">
+    <rect x="40"  y="300" width="240" height="110" fill="#d64541"/>
+    <rect x="280" y="300" width="240" height="110" fill="#2e6da4"/>
+    <rect x="520" y="300" width="240" height="110" fill="#e67e22"/>
+    <rect x="120" y="190" width="240" height="110" fill="#27ae60"/>
+    <rect x="360" y="190" width="240" height="110" fill="#e2007a"/>
+    <rect x="240" y="80"  width="240" height="110" fill="#f1c40f"/>
+  </g>
+  <g stroke="#ffffff55" stroke-width="4">
+    <path d="M70 300 v110 M110 300 v110 M150 300 v110 M190 300 v110 M230 300 v110"/>
+    <path d="M310 300 v110 M350 300 v110 M390 300 v110 M430 300 v110 M470 300 v110"/>
+    <path d="M550 300 v110 M590 300 v110 M630 300 v110 M670 300 v110 M710 300 v110"/>
+    <path d="M150 190 v110 M190 190 v110 M230 190 v110 M270 190 v110 M310 190 v110"/>
+    <path d="M390 190 v110 M430 190 v110 M470 190 v110 M510 190 v110 M550 190 v110"/>
+    <path d="M270 80 v110 M310 80 v110 M350 80 v110 M390 80 v110 M430 80 v110"/>
+  </g>
+  <rect x="0" y="410" width="800" height="40" fill="#7d8d97"/>
+</svg>

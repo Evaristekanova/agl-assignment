@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e1c33"/>
+      <stop offset="1" stop-color="#1f3a5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#night)"/>
+  <g fill="#16294a">
+    <rect x="60" y="180" width="110" height="270"/>
+    <rect x="200" y="120" width="130" height="330"/>
+    <rect x="360" y="200" width="100" height="250"/>
+    <rect x="490" y="90" width="140" height="360"/>
+    <rect x="660" y="170" width="100" height="280"/>
+  </g>
+  <g fill="#ffd27a" opacity="0.9">
+    <rect x="215" y="140" width="14" height="10"/><rect x="245" y="140" width="14" height="10"/><rect x="275" y="164" width="14" height="10"/>
+    <rect x="215" y="188" width="14" height="10"/><rect x="305" y="188" width="14" height="10"/><rect x="245" y="212" width="14" height="10"/>
+    <rect x="505" y="110" width="14" height="10"/><rect x="535" y="110" width="14" height="10"/><rect x="595" y="134" width="14" height="10"/>
+    <rect x="505" y="158" width="14" height="10"/><rect x="565" y="182" width="14" height="10"/><rect x="595" y="206" width="14" height="10"/>
+    <rect x="75" y="200" width="12" height="9"/><rect x="105" y="224" width="12" height="9"/><rect x="135" y="200" width="12" height="9"/>
+    <rect x="375" y="220" width="12" height="9"/><rect x="405" y="244" width="12" height="9"/><rect x="675" y="190" width="12" height="9"/>
+    <rect x="705" y="214" width="12" height="9"/>
+  </g>
+  <rect x="0" y="440" width="800" height="10" fill="#0a1526"/>
+  <path d="M0 445 h800" stroke="#e2007a" stroke-width="3" opacity="0.6"/>
+</svg>

@@ -1,0 +1,61 @@
+{
+  "name": "AGL Rwanda",
+  "tagline": "Filiale du groupe Africa Global Logistics",
+  "locale": "fr-FR",
+  "logo": { "src": "/logo.svg", "alt": "AGL Rwanda", "width": 48, "height": 36 },
+  "theme": {
+    "brand": "#e2007a",
+    "brandDark": "#b0005f",
+    "brandSoft": "#fdeef6",
+    "gradientFrom": "#c9105c",
+    "gradientTo": "#f062a8",
+    "accent": "#f2683c",
+    "ink": "#26262b"
+  },
+  "dictionary": {
+    "news.all": "Tous",
+    "news.readMore": "Lire la suite",
+    "news.shown": "actualité(s) affichée(s)",
+    "nav.open": "Ouvrir le menu",
+    "nav.close": "Fermer le menu"
+  },
+  "nav": [
+    { "href": "#", "text": "Accueil" },
+    { "href": "#", "text": "À propos" },
+    { "href": "#", "text": "Services" },
+    { "href": "#", "text": "Engagements" },
+    { "href": "/actualites", "text": "Actualités" },
+    { "href": "#", "text": "Nous rejoindre" },
+    { "href": "/contact", "text": "Contact" }
+  ],
+  "footer": {
+    "columns": [
+      {
+        "title": "Navigation",
+        "links": [
+          { "href": "#", "text": "À propos" },
+          { "href": "#", "text": "Services" },
+          { "href": "#", "text": "Engagements" },
+          { "href": "/actualites", "text": "Actualités" }
+        ]
+      },
+      {
+        "title": "Nos Services",
+        "links": [
+          { "href": "#", "text": "Transport Multimodal" },
+          { "href": "#", "text": "Oil & Gas" },
+          { "href": "#", "text": "Opération Portuaire" },
+          { "href": "#", "text": "Logistique de Projet" },
+          { "href": "#", "text": "Entreposage" }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Contact",
+      "address": "PLOT 2150 PRIME ECONOMIC ZONE, Kigali, Rwanda",
+      "phone": "+250 XX XX XX XX",
+      "email": "contact@mail.com"
+    },
+    "legal": "© 2026 - Filiale du groupe Africa Global Logistics. Tous droits réservés."
+  }
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="">
+  <defs>
+    <linearGradient id="hall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4e3c7"/>
+      <stop offset="1" stop-color="#d9b98c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#hall)"/>
+  <path d="M0 0 L330 160 L330 450 L0 450 Z" fill="#b98c55"/>
+  <path d="M800 0 L470 160 L470 450 L800 450 Z" fill="#a97c48"/>
+  <g stroke="#8a5f33" stroke-width="8" opacity="0.8">
+    <path d="M0 90 L330 205"/><path d="M0 200 L330 285"/><path d="M0 320 L330 370"/>
+    <path d="M800 90 L470 205"/><path d="M800 200 L470 285"/><path d="M800 320 L470 370"/>
+  </g>
+  <g fill="#e2687a" opacity="0.85">
+    <rect x="40" y="110" width="46" height="34" transform="skewY(16)"/>
+    <rect x="150" y="80" width="46" height="34" transform="skewY(12)"/>
+    <rect x="700" y="-120" width="46" height="34" transform="skewY(-14)"/>
+  </g>
+  <g fill="#3f74a3" opacity="0.85">
+    <rect x="110" y="220" width="46" height="34" transform="skewY(10)"/>
+    <rect x="640" y="30" width="46" height="34" transform="skewY(-10)"/>
+  </g>
+  <path d="M330 160 L470 160 L470 450 L330 450 Z" fill="#f8ecd8"/>
+  <path d="M330 450 L470 450 L470 380 L330 380 Z" fill="#e3cba2"/>
+</svg>

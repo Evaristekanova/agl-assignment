@@ -1,0 +1,108 @@
+{
+  "route": "/actualites",
+  "name": "Actualités",
+  "meta": {
+    "title": "Nos Actualités — AGL Rwanda",
+    "description": "Découvrez les dernières nouvelles et événements d'AGL Rwanda, filiale du groupe Africa Global Logistics."
+  },
+  "placeholders": {
+    "main": [
+      {
+        "uid": "actualites-hero",
+        "componentName": "HeroBanner",
+        "params": { "variant": "primary" },
+        "fields": {
+          "tag": { "value": "Actualités" },
+          "title": { "value": "Nos Actualités" },
+          "subtitle": { "value": "Découvrez les dernières nouvelles et événements" }
+        }
+      },
+      {
+        "uid": "actualites-listing",
+        "componentName": "NewsListing",
+        "params": { "columns": "3" },
+        "fields": {
+          "items": [
+            {
+              "title": { "value": "Salon International de la Logistique 2026" },
+              "excerpt": {
+                "value": "Notre équipe était présente au salon pour présenter nos solutions innovantes et rencontrer nos partenaires du secteur."
+              },
+              "image": { "value": { "src": "/news/salon-logistique.svg", "alt": "Salon International de la Logistique 2026", "width": 800, "height": 450 } },
+              "category": { "value": "Événements" },
+              "categoryTone": { "value": "dark" },
+              "date": { "value": "2026-03-15" },
+              "link": { "value": { "href": "#", "text": "Lire la suite" } }
+            },
+            {
+              "title": { "value": "Consolidation de notre position dans le projet gazier GTA" },
+              "excerpt": {
+                "value": "Notre société consolide son rôle de premier acteur logistique du plus vaste projet gazier d'Afrique de l'Ouest."
+              },
+              "image": { "value": { "src": "/news/projet-gta.svg", "alt": "Projet gazier GTA", "width": 800, "height": 450 } },
+              "category": { "value": "Presse" },
+              "categoryTone": { "value": "blue" },
+              "date": { "value": "2026-03-08" },
+              "link": { "value": { "href": "#", "text": "Lire la suite" } }
+            },
+            {
+              "title": { "value": "Inauguration de nouvelles installations" },
+              "excerpt": {
+                "value": "Notre entreprise modernise ses infrastructures pour mieux servir ses clients et renforcer sa capacité opérationnelle."
+              },
+              "image": { "value": { "src": "/news/installations.svg", "alt": "Nouvelles installations", "width": 800, "height": 450 } },
+              "category": { "value": "Événements" },
+              "categoryTone": { "value": "dark" },
+              "date": { "value": "2026-02-22" },
+              "link": { "value": { "href": "#", "text": "Lire la suite" } }
+            },
+            {
+              "title": { "value": "Partenariat stratégique avec Africa Global Logistics" },
+              "excerpt": {
+                "value": "Renforcement de la collaboration avec notre maison mère pour développer de nouvelles solutions logistiques."
+              },
+              "image": { "value": { "src": "/news/partenariat.svg", "alt": "Partenariat avec Africa Global Logistics", "width": 800, "height": 450 } },
+              "category": { "value": "Presse" },
+              "categoryTone": { "value": "blue" },
+              "date": { "value": "2026-02-10" },
+              "link": { "value": { "href": "#", "text": "Lire la suite" } }
+            },
+            {
+              "title": { "value": "Formation de 50 nouveaux collaborateurs aux normes Q-HSE" },
+              "excerpt": {
+                "value": "Formation continue de nos équipes pour garantir les plus hauts standards de qualité et sécurité."
+              },
+              "image": { "value": { "src": "/news/formation-qhse.svg", "alt": "Formation aux normes Q-HSE", "width": 800, "height": 450 } },
+              "category": { "value": "Événements" },
+              "categoryTone": { "value": "dark" },
+              "date": { "value": "2026-01-28" },
+              "link": { "value": { "href": "#", "text": "Lire la suite" } }
+            },
+            {
+              "title": { "value": "Certification internationale pour nos opérations" },
+              "excerpt": {
+                "value": "Reconnaissance de nos efforts en matière de qualité et de respect des normes internationales."
+              },
+              "image": { "value": { "src": "/news/certification.svg", "alt": "Certification internationale", "width": 800, "height": 450 } },
+              "category": { "value": "Presse" },
+              "categoryTone": { "value": "blue" },
+              "date": { "value": "2026-01-15" },
+              "link": { "value": { "href": "#", "text": "Lire la suite" } }
+            }
+          ]
+        }
+      },
+      {
+        "uid": "actualites-newsletter",
+        "componentName": "NewsletterSignup",
+        "fields": {
+          "heading": { "value": "Restez informé" },
+          "text": { "value": "Inscrivez-vous à notre newsletter pour recevoir les dernières actualités" },
+          "placeholder": { "value": "Votre adresse email" },
+          "buttonLabel": { "value": "S'inscrire" },
+          "successMessage": { "value": "Merci ! Votre inscription a bien été prise en compte." }
+        }
+      }
+    ]
+  }
+}
