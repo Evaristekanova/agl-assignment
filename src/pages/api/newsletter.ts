@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { newsletterSchema } from "@/lib/newsletter-schema";
-import { isRateLimited, clientIp } from "@/lib/rate-limit";
+import { newsletterSchema } from "@/schemas/newsletter-schema";
+import { isRateLimited, clientIp } from "@/security/rate-limit";
 
 /**
  * Newsletter signup endpoint (mock backend). Same layered approach as

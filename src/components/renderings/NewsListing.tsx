@@ -1,15 +1,10 @@
 import { useMemo, useState } from "react";
-import type {
-  TextField,
-  DateField,
-  ImageField,
-  LinkField,
-} from "@/lib/types";
+import type { TextField, DateField, ImageField, LinkField } from "@/types";
 import type { RenderingProps } from "../registry";
 import { Text } from "../fields/Text";
 import { Image } from "../fields/Image";
 import { Link } from "../fields/Link";
-import { useDictionary, useLocale } from "@/lib/site-context";
+import { useDictionary, useLocale } from "@/context/site-context";
 
 interface NewsItem {
   title?: TextField;
@@ -99,7 +94,11 @@ export function NewsListing({ rendering }: RenderingProps) {
 
         <div className={`mt-8 grid grid-cols-1 gap-6 ${columns}`}>
           {visible.map((item, index) => (
-            <NewsCard key={item.title?.value ?? index} item={item} locale={locale} />
+            <NewsCard
+              key={item.title?.value ?? index}
+              item={item}
+              locale={locale}
+            />
           ))}
         </div>
       </div>
@@ -185,7 +184,7 @@ function NewsCard({ item, locale }: { item: NewsItem; locale: string }) {
         />
         <Link
           field={item.link}
-          className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand transition hover:text-brand-dark"
+          className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-green transition hover:text-green-100"
         >
           {item.link?.value?.text}
           <span aria-hidden="true">→</span>
@@ -207,6 +206,6 @@ function formatDate(iso: string, locale: string): string {
   }).format(date);
   return formatted.replace(
     /\p{L}+/u,
-    (month) => month.charAt(0).toUpperCase() + month.slice(1)
+    (month) => month.charAt(0).toUpperCase() + month.slice(1),
   );
 }

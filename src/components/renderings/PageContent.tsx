@@ -1,4 +1,4 @@
-import type { RichTextField } from "@/lib/types";
+import type { RichTextField } from "@/types";
 import type { RenderingProps } from "../registry";
 import { RichText } from "../fields/RichText";
 

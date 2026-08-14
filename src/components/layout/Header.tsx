@@ -2,8 +2,8 @@ import { useState } from "react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import { useRouter } from "next/router";
-import type { SiteData } from "@/lib/types";
-import { useDictionary } from "@/lib/site-context";
+import type { SiteData } from "@/types";
+import { useDictionary } from "@/context/site-context";
 
 /**
  * Site header driven by site.json content: logo, nav items and menu

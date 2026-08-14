@@ -1,5 +1,5 @@
 import type { ElementType } from "react";
-import type { TextField } from "@/lib/types";
+import type { TextField } from "@/types";
 
 interface TextProps {
   field?: TextField;

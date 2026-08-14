@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 import type { ReactNode } from "react";
-import type { LinkField } from "@/lib/types";
+import type { LinkField } from "@/types";
 
 interface LinkProps {
   field?: LinkField;

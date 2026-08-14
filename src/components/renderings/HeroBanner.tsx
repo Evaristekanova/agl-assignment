@@ -1,4 +1,4 @@
-import type { TextField, LinkField } from "@/lib/types";
+import type { TextField, LinkField } from "@/types";
 import type { RenderingProps } from "../registry";
 import { Text } from "../fields/Text";
 import { Link } from "../fields/Link";

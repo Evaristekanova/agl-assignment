@@ -1,5 +1,5 @@
-import type { RichTextField } from "@/lib/types";
-import { sanitize } from "@/lib/sanitize";
+import type { RichTextField } from "@/types";
+import { sanitize } from "@/security/sanitize";
 
 interface RichTextProps {
   field?: RichTextField;

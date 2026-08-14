@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import type { SiteData } from "@/lib/types";
+import type { SiteData } from "@/types";
 
 /** Dark footer: link columns + contact block, all driven by site.json. */
 export function Footer({ site }: { site: SiteData }) {

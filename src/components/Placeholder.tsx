@@ -1,4 +1,4 @@
-import type { PlaceholderMap } from "@/lib/types";
+import type { PlaceholderMap } from "@/types";
 import { resolveComponent } from "./registry";
 
 interface PlaceholderProps {

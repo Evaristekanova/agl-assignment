@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { contactSchema } from "@/lib/contact-schema";
-import { isRateLimited, clientIp } from "@/lib/rate-limit";
+import { contactSchema } from "@/schemas/contact-schema";
+import { isRateLimited, clientIp } from "@/security/rate-limit";
 
 /**
  * Contact form endpoint (mock backend).
@@ -41,7 +41,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   // Honeypot filled -> almost certainly a bot. Respond with success so
   // the bot learns nothing, but do not process the submission.
-  if (parsed.data.company) {
+  if (parsed.data.website) {
     return res.status(200).json({ ok: true });
   }
 

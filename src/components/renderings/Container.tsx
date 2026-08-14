@@ -6,6 +6,7 @@ const themes: Record<string, string> = {
   muted: "bg-slate-100",
   dark: "bg-ink text-white",
   brand: "bg-brand-soft",
+  green: "bg-green-50",
 };
 
 /**
@@ -18,7 +19,10 @@ export function Container({ rendering }: RenderingProps) {
   const theme = themes[rendering.params?.theme ?? "default"] ?? themes.default;
   return (
     <section className={theme}>
-      <Placeholder name="container-content" placeholders={rendering.placeholders} />
+      <Placeholder
+        name="container-content"
+        placeholders={rendering.placeholders}
+      />
     </section>
   );
 }

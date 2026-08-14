@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { GetStaticPaths, GetStaticProps } from "next";
-import type { RouteData, SiteData } from "@/lib/types";
-import { getAllRoutes, getRouteData, getSiteData } from "@/lib/layout-service";
+import type { RouteData, SiteData } from "@/types";
+import { getAllRoutes, getRouteData, getSiteData } from "@/services/layout-service";
 import { Placeholder } from "@/components/Placeholder";
 
 interface CmsPageProps {

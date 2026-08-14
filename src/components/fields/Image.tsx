@@ -1,5 +1,5 @@
 import NextImage from "next/image";
-import type { ImageField } from "@/lib/types";
+import type { ImageField } from "@/types";
 
 interface ImageProps {
   field?: ImageField;

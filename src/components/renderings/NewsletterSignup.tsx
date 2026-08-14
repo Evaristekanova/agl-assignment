@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from "react";
-import type { TextField } from "@/lib/types";
+import type { TextField } from "@/types";
 import type { RenderingProps } from "../registry";
 import { Text } from "../fields/Text";
-import { newsletterSchema } from "@/lib/newsletter-schema";
+import { newsletterSchema } from "@/schemas/newsletter-schema";
 
 interface NewsletterSignupFields {
   heading?: TextField;

@@ -1,5 +1,5 @@
 import { createContext, useContext, type ReactNode } from "react";
-import type { SiteData } from "./types";
+import type { SiteData } from "@/types";
 
 /**
  * Site context — the equivalent of the JSS SitecoreContext: gives any

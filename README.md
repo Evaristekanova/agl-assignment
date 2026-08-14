@@ -22,19 +22,24 @@ src/
   content/              ← mock CMS content (stands in for Sitecore Layout Service)
     site.json           ← site chrome: brand theme, logo, dictionary, nav, footer
     routes/*.json       ← one layout document per route
-  lib/
+  services/
     layout-service.ts   ← the ONLY module that knows where content comes from
+  context/
     site-context.tsx    ← SiteProvider/useSite (≈ JSS SitecoreContext: locale, dictionary)
-    types.ts            ← content model (mirrors the Layout Service response shape)
-    sanitize.ts         ← HTML allowlist for CMS rich text
+  types/
+    index.ts            ← content model (mirrors the Layout Service response shape)
+  schemas/
     contact-schema.ts   ← zod schemas shared by client and server
     newsletter-schema.ts
+  security/
+    sanitize.ts         ← HTML allowlist for CMS rich text
     rate-limit.ts       ← in-memory limiter shared by the API routes
   components/
     registry.ts         ← componentName → React component (JSS component factory)
     Placeholder.tsx     ← renders whatever the CMS placed in a named placeholder
     fields/             ← Text / RichText / Image / Link field renderers
-    content/            ← CMS-managed components (see table below)
+    renderings/         ← CMS-managed page components (Sitecore "renderings")
+    ui/                 ← reusable form primitives (FormField, Input, Textarea)
     layout/             ← Header / Footer chrome
   pages/
     [[...path]].tsx     ← one route renders every page from layout data
@@ -65,7 +70,7 @@ The registry key, React component name and file name are always **identical** �
 - **Rendering parameters** (`params`) drive presentation variants from the CMS: the hero's `variant`, the listing's `columns`, the container's `theme` — one implementation, many editorial uses.
 - **Dynamic by content, not code**: the `NewsListing` filter chips are derived from the categories present in the items — an editor adding a third category in the CMS gets a third chip automatically. Badge colors are a `categoryTone` field (editors pick a tone, not a hex code).
 - **Nested placeholders**: `Container` exposes its own `container-content` placeholder, demonstrating container composition exactly as Sitecore does it.
-- **Migration path**: `lib/layout-service.ts` is the only module that knows content comes from the filesystem. Pointing the app at a real Sitecore Layout Service/Edge GraphQL endpoint changes that one file; types, registry, placeholders and components are untouched.
+- **Migration path**: `services/layout-service.ts` is the only module that knows content comes from the filesystem. Pointing the app at a real Sitecore Layout Service/Edge GraphQL endpoint changes that one file; types, registry, placeholders and components are untouched.
 
 ### Trade-offs
 
@@ -77,20 +82,22 @@ The registry key, React component name and file name are always **identical** �
 
 ## The contact form
 
-- **One zod schema** (`lib/contact-schema.ts`) validates on the client (react-hook-form resolver, instant field-level feedback) *and* on the server (`api/contact.ts`) — client validation is UX, never a security boundary.
+- **One zod schema** (`schemas/contact-schema.ts`) validates on the client (react-hook-form resolver, instant field-level feedback) *and* on the server (`api/contact.ts`) — client validation is UX, never a security boundary.
+- Six fields (name, phone, e-mail, company, subject, message); required fields follow the design's asterisks (e-mail, objet, message). Every label, placeholder and message is CMS content — only the validation rules live in code.
+- Built from reusable primitives (`components/ui/`): `FormField` handles label + error wiring, `Input`/`Textarea` share control styling — any future form reuses them.
 - Full submit lifecycle: disabled/loading state, success panel (message is CMS content), server error surface, "send another message" reset.
 - Accessible: proper labels, `aria-invalid`, `aria-describedby` wiring to error messages, `role="alert"`/`role="status"` announcements.
 - Backend is a mock: the API validates and accepts, but deliberately does not persist or log PII.
-- The newsletter signup follows the same pattern in miniature (`newsletter-schema.ts` + `api/newsletter.ts`).
+- The newsletter signup follows the same pattern in miniature (`schemas/newsletter-schema.ts` + `api/newsletter.ts`).
 
 ## Security layers
 
 | Layer | Where |
 |---|---|
 | CSP (no external origins), `X-Frame-Options`, `nosniff`, `Referrer-Policy`, `Permissions-Policy` | `next.config.ts` |
-| CMS HTML sanitized via allowlist before `dangerouslySetInnerHTML` (stored-XSS defense) | `lib/sanitize.ts` |
+| CMS HTML sanitized via allowlist before `dangerouslySetInnerHTML` (stored-XSS defense) | `security/sanitize.ts` |
 | Server-side re-validation with shared zod schemas | `pages/api/*.ts` |
-| Rate limiting (5 req/min/IP per endpoint) + payload caps + method allowlists | `lib/rate-limit.ts`, `pages/api/*.ts` |
+| Rate limiting (5 req/min/IP per endpoint) + payload caps + method allowlists | `security/rate-limit.ts`, `pages/api/*.ts` |
 | Honeypot field (bots get a fake success — no signal to adapt) | `ContactForm.tsx` + API |
 | External links get `rel="noopener noreferrer"`; link schemes restricted to https/mailto/tel | `fields/Link.tsx`, `sanitize.ts` |
 | Fonts self-hosted via `next/font` (no third-party request), `X-Powered-By` disabled | `_app.tsx`, `next.config.ts` |
@@ -100,6 +107,6 @@ Known production hardening not done here: CSP nonces instead of `'unsafe-inline'
 
 ## Adding a component (the CMS workflow)
 
-1. Create it under `components/content/`, reading `rendering.fields` through the field renderers.
+1. Create it under `components/renderings/`, reading `rendering.fields` through the field renderers.
 2. Register it in `components/registry.ts`.
 3. Editors can now place it in any placeholder via content JSON — no page code changes.

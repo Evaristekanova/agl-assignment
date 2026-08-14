@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import type { RouteData, SiteData } from "./types";
+import type { RouteData, SiteData } from "@/types";
 
 /**
  * Mock Layout Service.

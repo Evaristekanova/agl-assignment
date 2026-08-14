@@ -1,11 +1,11 @@
 import type { ComponentType } from "react";
-import type { ComponentRendering } from "@/lib/types";
-import { HeroBanner } from "./content/HeroBanner";
-import { NewsListing } from "./content/NewsListing";
-import { NewsletterSignup } from "./content/NewsletterSignup";
-import { Container } from "./content/Container";
-import { PageContent } from "./content/PageContent";
-import { ContactForm } from "./content/ContactForm";
+import type { ComponentRendering } from "@/types";
+import { HeroBanner } from "./renderings/HeroBanner";
+import { NewsListing } from "./renderings/NewsListing";
+import { NewsletterSignup } from "./renderings/NewsletterSignup";
+import { Container } from "./renderings/Container";
+import { PageContent } from "./renderings/PageContent";
+import { ContactForm } from "./renderings/ContactForm";
 
 /** Every registered component receives its rendering (fields + params + nested placeholders). */
 export interface RenderingProps {

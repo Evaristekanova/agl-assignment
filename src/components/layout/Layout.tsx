@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
-import type { SiteData } from "@/lib/types";
-import { SiteProvider } from "@/lib/site-context";
+import type { SiteData } from "@/types";
+import { SiteProvider } from "@/context/site-context";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
