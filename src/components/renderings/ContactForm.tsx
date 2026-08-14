@@ -2,16 +2,19 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema, type ContactInput } from "@/schemas/contact-schema";
-import type { TextField } from "@/types";
+import type { TextField, RichTextField } from "@/types";
 import type { RenderingProps } from "../registry";
 import { Text } from "../fields/Text";
+import { RichText } from "../fields/RichText";
 import { Input } from "../ui/Input";
 import { Textarea } from "../ui/Textarea";
+import { Button } from "../ui/Button";
 import { Send } from "lucide-react";
 
 interface ContactFormFields {
   heading?: TextField;
-  intro?: TextField;
+  /** Rich text: editors may bold phrases or add links — sanitized before render. */
+  intro?: RichTextField;
   successMessage?: TextField;
   nameLabel?: TextField;
   namePlaceholder?: TextField;
@@ -51,9 +54,8 @@ export function ContactForm({ rendering }: RenderingProps) {
           tag="h2"
           className="text-center text-2xl font-bold tracking-tight text-[#24466b] sm:text-3xl"
         />
-        <Text
+        <RichText
           field={fields.intro}
-          tag="p"
           className="mt-3 text-center text-lg text-slate-600"
         />
         <div className="mx-auto mt-10 max-w-3xl rounded-2xl bg-white p-6 shadow-md ring-1 ring-slate-100 sm:p-10">
@@ -112,13 +114,15 @@ function Form({ fields }: { fields: ContactFormFields }) {
         <p className="mt-1">
           {value(fields.successMessage, "Merci pour votre message.")}
         </p>
-        <button
+        <Button
           type="button"
+          variant="link"
+          size="bare"
           onClick={() => setStatus("idle")}
-          className="mt-4 text-sm font-medium text-green-800 underline hover:text-green-900"
+          className="mt-4 text-sm text-green-800 hover:text-green-900"
         >
           Envoyer un autre message
-        </button>
+        </Button>
       </div>
     );
   }
@@ -232,14 +236,10 @@ function Form({ fields }: { fields: ContactFormFields }) {
       </div>
 
       <div className="pt-2 text-center">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="inline-flex items-center gap-2 rounded-md bg-[#24466b] px-7 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1a3552] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#24466b] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
-        >
+        <Button type="submit" variant="navy" disabled={isSubmitting}>
           <Send className="h-4 w-4" />
           {isSubmitting ? "Envoi…" : value(fields.buttonLabel, "Envoyer")}
-        </button>
+        </Button>
       </div>
     </form>
   );

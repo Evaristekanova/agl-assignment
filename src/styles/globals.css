@@ -13,6 +13,7 @@
   --gradient-to: #f062a8;
   --accent: #f2683c;
   --ink: #26262b;
+  --green: #00a86b;
 }
 
 /* Expose the tokens as Tailwind color utilities (bg-brand, text-brand,
@@ -28,6 +29,7 @@
   --color-grad-to: var(--gradient-to);
   --color-accent: var(--accent);
   --color-ink: var(--ink);
+  --color-green: var(--green);
   --font-sans: var(--font-poppins);
 }
 

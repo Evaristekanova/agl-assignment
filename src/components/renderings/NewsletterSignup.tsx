@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import type { TextField } from "@/types";
 import type { RenderingProps } from "../registry";
 import { Text } from "../fields/Text";
+import { Button } from "../ui/Button";
 import { newsletterSchema } from "@/schemas/newsletter-schema";
 
 interface NewsletterSignupFields {
@@ -101,15 +102,11 @@ export function NewsletterSignup({ rendering }: RenderingProps) {
               aria-describedby={status === "error" ? "newsletter-error" : undefined}
               className="w-full flex-1 rounded-full border-0 bg-white px-5 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-white/70"
             />
-            <button
-              type="submit"
-              disabled={status === "submitting"}
-              className="rounded-full bg-ink px-6 py-3 font-semibold text-white transition hover:bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:cursor-not-allowed disabled:opacity-60"
-            >
+            <Button type="submit" variant="ink" size="lg" disabled={status === "submitting"}>
               {status === "submitting"
                 ? "Envoi…"
                 : fields.buttonLabel?.value ?? "S'inscrire"}
-            </button>
+            </Button>
           </form>
         )}
 

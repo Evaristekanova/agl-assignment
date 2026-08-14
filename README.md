@@ -39,7 +39,7 @@ src/
     Placeholder.tsx     ← renders whatever the CMS placed in a named placeholder
     fields/             ← Text / RichText / Image / Link field renderers
     renderings/         ← CMS-managed page components (Sitecore "renderings")
-    ui/                 ← form controls (Input, Textarea — each a full labeled row)
+    ui/                 ← Button (all variants) + form controls (Input, Textarea)
     layout/             ← Header / Footer chrome
   pages/
     [[...path]].tsx     ← one route renders every page from layout data
@@ -57,8 +57,6 @@ The registry key, React component name and file name are always **identical** �
 | `NewsListing` | News card grid with client-side category filter chips | `columns`: 2 / 3 / 4 |
 | `NewsletterSignup` | Gradient newsletter band with validated email signup | — |
 | `ContactForm` | Full contact form (heading/intro/success are CMS content) | — |
-| `Container` | Wrapper exposing a nested `container-content` placeholder | `theme`: default / muted / dark / brand |
-| `PageContent` | Free-form sanitized rich text | — |
 
 ### Why this shape
 
@@ -67,9 +65,9 @@ The registry key, React component name and file name are always **identical** �
 - **Dictionary + locale as content.** UI phrases ("Tous", "Lire la suite") and the formatting locale come from `site.json` through `useDictionary()`/`useLocale()`, mirroring the Sitecore dictionary service — each market translates without a deployment. Dates are stored as ISO in content and formatted per locale at render time.
 - **Component registry + Placeholder** replicate Sitecore JSS's component factory and `<Placeholder />`. An unregistered component name renders a visible warning in development and is skipped silently in production, so an editor mistake can never take a page down.
 - **Field renderers** (`Text`, `RichText`, `Image`, `Link`) mean components never touch raw field values — the same discipline JSS enforces, which is what later makes inline editing (Experience Editor / Pages) possible.
-- **Rendering parameters** (`params`) drive presentation variants from the CMS: the hero's `variant`, the listing's `columns`, the container's `theme` — one implementation, many editorial uses.
+- **Rendering parameters** (`params`) drive presentation variants from the CMS: the hero's `variant`, the listing's `columns` — one implementation, many editorial uses.
 - **Dynamic by content, not code**: the `NewsListing` filter chips are derived from the categories present in the items — an editor adding a third category in the CMS gets a third chip automatically. Badge colors are a `categoryTone` field (editors pick a tone, not a hex code).
-- **Nested placeholders**: `Container` exposes its own `container-content` placeholder, demonstrating container composition exactly as Sitecore does it.
+- **Nested placeholders by design**: `ComponentRendering.placeholders` and the recursive `<Placeholder />` support container components out of the box (a wrapper rendering `<Placeholder name="..." placeholders={rendering.placeholders} />` is all it takes). The two required pages didn't need one, so none is shipped — the registry only contains components that are actually used.
 - **Migration path**: `services/layout-service.ts` is the only module that knows content comes from the filesystem. Pointing the app at a real Sitecore Layout Service/Edge GraphQL endpoint changes that one file; types, registry, placeholders and components are untouched.
 
 ### Trade-offs
@@ -95,7 +93,7 @@ The registry key, React component name and file name are always **identical** �
 | Layer | Where |
 |---|---|
 | CSP (no external origins), `X-Frame-Options`, `nosniff`, `Referrer-Policy`, `Permissions-Policy` | `next.config.ts` |
-| CMS HTML sanitized via allowlist before `dangerouslySetInnerHTML` (stored-XSS defense) | `security/sanitize.ts` |
+| CMS HTML sanitized via allowlist before `dangerouslySetInnerHTML` (stored-XSS defense) — live on the contact form intro, a rich-text field. Try it: add `<script>alert(1)</script>` to `intro` in `content/routes/contact.json` and reload — it never reaches the DOM | `security/sanitize.ts`, `fields/RichText.tsx` |
 | Server-side re-validation with shared zod schemas | `pages/api/*.ts` |
 | Rate limiting (5 req/min/IP per endpoint) + payload caps + method allowlists | `security/rate-limit.ts`, `pages/api/*.ts` |
 | Honeypot field (bots get a fake success — no signal to adapt) | `ContactForm.tsx` + API |

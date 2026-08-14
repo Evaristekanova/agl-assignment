@@ -23,7 +23,7 @@
         "componentName": "ContactForm",
         "fields": {
           "heading": { "value": "Envoyez-nous un message" },
-          "intro": { "value": "Pour plus d'informations n'hésitez pas à nous contacter" },
+          "intro": { "value": "Pour plus d'informations <strong>n'hésitez pas</strong> à nous contacter" },
           "successMessage": {
             "value": "Merci — votre message a bien été envoyé. Notre équipe reviendra vers vous rapidement."
           },

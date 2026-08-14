@@ -5,6 +5,9 @@ import { Text } from "../fields/Text";
 import { Image } from "../fields/Image";
 import { Link } from "../fields/Link";
 import { useDictionary, useLocale } from "@/context/site-context";
+import { Button } from "../ui/Button";
+import { formatDate } from "@/lib/utils";
+import { Calendar } from "lucide-react";
 
 interface NewsItem {
   title?: TextField;
@@ -21,13 +24,15 @@ interface NewsListingFields {
   items?: NewsItem[];
 }
 
-const toneClasses: Record<string, string> = {
+const toneClassesController: Record<string, string> = {
   dark: "bg-slate-800",
   blue: "bg-sky-500",
   brand: "bg-brand",
+  green: "text-green-600",
+  greenSoft: "text-green-800",
 };
 
-const columnClasses: Record<string, string> = {
+const columnClassesController: Record<string, string> = {
   "2": "sm:grid-cols-2",
   "3": "sm:grid-cols-2 lg:grid-cols-3",
   "4": "sm:grid-cols-2 lg:grid-cols-4",
@@ -43,7 +48,8 @@ export function NewsListing({ rendering }: RenderingProps) {
   const fields = (rendering.fields ?? {}) as NewsListingFields;
   const items = useMemo(() => fields.items ?? [], [fields.items]);
   const columns =
-    columnClasses[rendering.params?.columns ?? "3"] ?? columnClasses["3"];
+    columnClassesController[rendering.params?.columns ?? "3"] ??
+    columnClassesController["3"];
 
   const t = useDictionary();
   const locale = useLocale();
@@ -116,23 +122,22 @@ function FilterChip({
   onClick: () => void;
 }) {
   return (
-    <button
+    <Button
       type="button"
+      variant={pressed ? "chipActive" : "chip"}
+      size="sm"
       aria-pressed={pressed}
       onClick={onClick}
-      className={`rounded-full px-4 py-1.5 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
-        pressed
-          ? "bg-accent text-white shadow-sm"
-          : "border border-slate-300 bg-white text-slate-700 hover:border-accent hover:text-accent"
-      }`}
     >
       {label}
-    </button>
+    </Button>
   );
 }
 
 function NewsCard({ item, locale }: { item: NewsItem; locale: string }) {
-  const tone = toneClasses[item.categoryTone?.value ?? ""] ?? toneClasses.brand;
+  const tone =
+    toneClassesController[item.categoryTone?.value ?? ""] ??
+    toneClassesController.brand;
   return (
     <article className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:shadow-md">
       <div className="relative aspect-video">
@@ -154,19 +159,7 @@ function NewsCard({ item, locale }: { item: NewsItem; locale: string }) {
       <div className="flex flex-1 flex-col p-5">
         {item.date?.value && (
           <p className="flex items-center gap-1.5 text-sm text-slate-500">
-            <svg
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <rect x="3" y="5" width="18" height="16" rx="2" />
-              <path d="M3 10h18M8 3v4M16 3v4" />
-            </svg>
+            <Calendar size={16} />
             <time dateTime={item.date.value}>
               {formatDate(item.date.value, locale)}
             </time>
@@ -184,28 +177,12 @@ function NewsCard({ item, locale }: { item: NewsItem; locale: string }) {
         />
         <Link
           field={item.link}
-          className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-green transition hover:text-green-100"
+          className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-green"
         >
           {item.link?.value?.text}
           <span aria-hidden="true">→</span>
         </Link>
       </div>
     </article>
-  );
-}
-
-/** "2026-03-15" -> "15 Mars 2026" (month capitalized to match the design). */
-function formatDate(iso: string, locale: string): string {
-  const date = new Date(`${iso}T00:00:00Z`);
-  if (Number.isNaN(date.getTime())) return iso;
-  const formatted = new Intl.DateTimeFormat(locale, {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(date);
-  return formatted.replace(
-    /\p{L}+/u,
-    (month) => month.charAt(0).toUpperCase() + month.slice(1),
   );
 }

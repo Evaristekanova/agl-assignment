@@ -3,8 +3,6 @@ import type { ComponentRendering } from "@/types";
 import { HeroBanner } from "./renderings/HeroBanner";
 import { NewsListing } from "./renderings/NewsListing";
 import { NewsletterSignup } from "./renderings/NewsletterSignup";
-import { Container } from "./renderings/Container";
-import { PageContent } from "./renderings/PageContent";
 import { ContactForm } from "./renderings/ContactForm";
 
 /** Every registered component receives its rendering (fields + params + nested placeholders). */
@@ -25,8 +23,6 @@ const registry: Record<string, ComponentType<RenderingProps>> = {
   HeroBanner,
   NewsListing,
   NewsletterSignup,
-  Container,
-  PageContent,
   ContactForm,
 };
 

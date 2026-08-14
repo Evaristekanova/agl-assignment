@@ -4,6 +4,7 @@ import NextImage from "next/image";
 import { useRouter } from "next/router";
 import type { SiteData } from "@/types";
 import { useDictionary } from "@/context/site-context";
+import { Button } from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
 
 /**
@@ -52,8 +53,10 @@ export function Header({ site }: { site: SiteData }) {
           </ul>
         </nav>
 
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-nav"
@@ -62,10 +65,10 @@ export function Header({ site }: { site: SiteData }) {
               ? t("nav.close", "Fermer le menu")
               : t("nav.open", "Ouvrir le menu")
           }
-          className="rounded-md p-2 text-slate-700 hover:bg-slate-100 lg:hidden"
+          className="lg:hidden"
         >
           {open ? <X /> : <Menu />}
-        </button>
+        </Button>
       </div>
 
       {open && (
