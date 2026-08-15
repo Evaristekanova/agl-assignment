@@ -83,7 +83,7 @@ The registry key, React component name and file name are always **identical** �
 - **One zod schema** (`schemas/contact-schema.ts`) validates on the client (react-hook-form resolver, instant field-level feedback) *and* on the server (`api/contact.ts`) — client validation is UX, never a security boundary.
 - Six fields (name, phone, e-mail, company, subject, message); required fields follow the design's asterisks (e-mail, objet, message). Every label, placeholder and message is CMS content — only the validation rules live in code.
 - Built from reusable controls (`components/ui/`): `Input` and `Textarea` each render a complete labeled row — label, required asterisk, control, error message and aria wiring derived from one `id`/`error` pair — so any future form is one element per field.
-- Full submit lifecycle: disabled/loading state, success panel (message is CMS content), server error surface, "send another message" reset.
+- Full submit lifecycle: disabled/loading state, then the backend outcome (success message — CMS content — or server error) surfaces as a toast (sonner); field-level validation errors stay inline next to their inputs.
 - Accessible: proper labels, `aria-invalid`, `aria-describedby` wiring to error messages, `role="alert"`/`role="status"` announcements.
 - Backend is a mock: the API validates and accepts, but deliberately does not persist or log PII.
 - The newsletter signup follows the same pattern in miniature (`schemas/newsletter-schema.ts` + `api/newsletter.ts`).

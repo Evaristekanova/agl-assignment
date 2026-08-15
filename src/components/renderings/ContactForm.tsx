@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 import { contactSchema, type ContactInput } from "@/schemas/contact-schema";
 import type { TextField, RichTextField } from "@/types";
 import type { RenderingProps } from "../registry";
@@ -30,8 +30,6 @@ interface ContactFormFields {
   messagePlaceholder?: TextField;
   buttonLabel?: TextField;
 }
-
-type SubmitStatus = "idle" | "success" | "error";
 
 const value = (field: TextField | undefined, fallback: string) =>
   field?.value ?? fallback;
@@ -67,8 +65,6 @@ export function ContactForm({ rendering }: RenderingProps) {
 }
 
 function Form({ fields }: { fields: ContactFormFields }) {
-  const [status, setStatus] = useState<SubmitStatus>("idle");
-  const [serverError, setServerError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -77,7 +73,6 @@ function Form({ fields }: { fields: ContactFormFields }) {
   } = useForm<ContactInput>({ resolver: zodResolver(contactSchema) });
 
   const onSubmit = handleSubmit(async (data) => {
-    setServerError(null);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -92,40 +87,16 @@ function Form({ fields }: { fields: ContactFormFields }) {
           body?.message ?? "Une erreur est survenue. Veuillez réessayer.",
         );
       }
-      setStatus("success");
+      toast.success(value(fields.successMessage, "Merci pour votre message."));
       reset();
     } catch (err) {
-      setStatus("error");
-      setServerError(
+      toast.error(
         err instanceof Error
           ? err.message
           : "Une erreur est survenue. Veuillez réessayer.",
       );
     }
   });
-
-  if (status === "success") {
-    return (
-      <div
-        role="status"
-        className="rounded-lg border border-green-200 bg-green-50 p-6 text-center text-green-900"
-      >
-        <p className="font-semibold">Message envoyé</p>
-        <p className="mt-1">
-          {value(fields.successMessage, "Merci pour votre message.")}
-        </p>
-        <Button
-          type="button"
-          variant="link"
-          size="bare"
-          onClick={() => setStatus("idle")}
-          className="mt-4 text-sm text-green-800 hover:text-green-900"
-        >
-          Envoyer un autre message
-        </Button>
-      </div>
-    );
-  }
 
   /* Paired short fields, rendered on one row from the sm breakpoint. */
   const pairedInputs: {
@@ -172,15 +143,6 @@ function Form({ fields }: { fields: ContactFormFields }) {
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-5">
-      {status === "error" && serverError && (
-        <div
-          role="alert"
-          className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-800"
-        >
-          {serverError}
-        </div>
-      )}
-
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {pairedInputs.map(
           ({ key, label, placeholder, type, autoComplete, required }) => (

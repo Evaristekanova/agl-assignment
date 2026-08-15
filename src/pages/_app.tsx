@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Poppins } from "next/font/google";
 import { Layout } from "@/components/layout/Layout";
+import { Toaster } from "sonner";
 import type { SiteData } from "@/types";
 
 // Self-hosted via next/font: no request to Google at runtime (no CSP
@@ -19,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Layout site={site}>
         <Component {...pageProps} />
       </Layout>
+      <Toaster position="top-center" richColors closeButton />
     </div>
   );
 }
