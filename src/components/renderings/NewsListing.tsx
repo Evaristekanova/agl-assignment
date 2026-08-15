@@ -94,7 +94,7 @@ export function NewsListing({ rendering }: RenderingProps) {
           </div>
         )}
 
-        <p role="status" className="sr-only">
+        <p role="status" className="sr-only mt-2">
           {visible.length} {t("news.shown", "actualité(s) affichée(s)")}
         </p>
 

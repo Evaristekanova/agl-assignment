@@ -2,7 +2,7 @@
   "name": "AGL Rwanda",
   "tagline": "Filiale du groupe Africa Global Logistics",
   "locale": "fr-FR",
-  "logo": { "src": "/logo.svg", "alt": "AGL Rwanda", "width": 48, "height": 36 },
+  "logo": { "src": "/LogoImage.png", "alt": "AGL Rwanda", "width": 60, "height": 48 },
   "theme": {
     "brand": "#e2007a",
     "green": "#00a86b",
