@@ -50,7 +50,7 @@ export function ContactForm({ rendering }: RenderingProps) {
         <Text
           field={fields.heading}
           tag="h2"
-          className="text-center text-2xl font-bold tracking-tight text-[#24466b] sm:text-3xl"
+          className="text-center text-2xl font-bold tracking-tight text-navy sm:text-3xl"
         />
         <RichText
           field={fields.intro}

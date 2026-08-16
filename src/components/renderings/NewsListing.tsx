@@ -10,6 +10,8 @@ import { formatDate } from "@/lib/utils";
 import { Calendar } from "lucide-react";
 
 interface NewsItem {
+  /** Stable item identity (a Sitecore item ID in production). */
+  uid?: string;
   title?: TextField;
   excerpt?: TextField;
   image?: ImageField;
@@ -24,12 +26,12 @@ interface NewsListingFields {
   items?: NewsItem[];
 }
 
+/* Badge background per categoryTone — background classes only. */
 const toneClassesController: Record<string, string> = {
   dark: "bg-slate-800",
   blue: "bg-sky-500",
   brand: "bg-brand",
-  green: "text-green-600",
-  greenSoft: "text-green-800",
+  green: "bg-green",
 };
 
 const columnClassesController: Record<string, string> = {
@@ -101,7 +103,7 @@ export function NewsListing({ rendering }: RenderingProps) {
         <div className={`mt-8 grid grid-cols-1 gap-6 ${columns}`}>
           {visible.map((item, index) => (
             <NewsCard
-              key={item.title?.value ?? index}
+              key={item.uid ?? item.title?.value ?? index}
               item={item}
               locale={locale}
             />

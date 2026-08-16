@@ -8,9 +8,11 @@
     "green": "#00a86b",
     "brandDark": "#b0005f",
     "brandSoft": "#fdeef6",
-    "gradientFrom": "#c9105c",
-    "gradientTo": "#f062a8",
+    "gradientFrom": "#c0176f",
+    "gradientTo": "#e5389a",
     "accent": "#f2683c",
+    "navy": "#24466b",
+    "navyDark": "#1a3552",
     "ink": "#26262b"
   },
   "dictionary": {

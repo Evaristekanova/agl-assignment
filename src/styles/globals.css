@@ -9,9 +9,11 @@
   --brand: #e2007a;
   --brand-dark: #b0005f;
   --brand-soft: #fdeef6;
-  --gradient-from: #c9105c;
-  --gradient-to: #f062a8;
+  --gradient-from: #c0176f;
+  --gradient-to: #e5389a;
   --accent: #f2683c;
+  --navy: #24466b;
+  --navy-dark: #1a3552;
   --ink: #26262b;
   --green: #00a86b;
 }
@@ -28,6 +30,8 @@
   --color-grad-from: var(--gradient-from);
   --color-grad-to: var(--gradient-to);
   --color-accent: var(--accent);
+  --color-navy: var(--navy);
+  --color-navy-dark: var(--navy-dark);
   --color-ink: var(--ink);
   --color-green: var(--green);
   --font-sans: var(--font-poppins);

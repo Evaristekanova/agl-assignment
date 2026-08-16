@@ -5,7 +5,7 @@ const variants = {
   brand:
     "rounded-full bg-brand font-semibold text-white hover:bg-brand-dark focus-visible:ring-brand",
   /** Navy rectangle — the contact form's submit style. */
-  navy: "rounded-md bg-[#24466b] font-semibold text-white hover:bg-[#1a3552] focus-visible:ring-[#24466b]",
+  navy: "rounded-md bg-navy font-semibold text-white hover:bg-navy-dark focus-visible:ring-navy",
   /** Dark pill on colored backgrounds — the newsletter's submit style. */
   ink: "rounded-full bg-ink font-semibold text-white hover:bg-black focus-visible:ring-white",
   /** Underlined text button; inherits color — set it via className at the call site. */
