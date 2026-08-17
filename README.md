@@ -5,6 +5,7 @@ A two-page web app (**Actualités** + **Contact**) built the way a Sitecore JSS 
 ## Quick start
 
 ```bash
+git clone https://github.com/Evaristekanova/agl-assignment.git
 npm install
 npm run dev
 ```
